@@ -15,13 +15,12 @@ void printGraph(vector<vector<int>>&graph){
         cout<<endl;
     }
 }
-void dfs(vector<vector<int>>&graph,int start){
-    vector<bool>visited(graph.size(),false);
+void dfs(vector<vector<int>>&graph,int start,vector<bool>&visited){
     visited[start]=true;
     cout<<start<<"->";
         for(auto neighbour:graph[start]){
             if(!visited[neighbour]){
-               dfs(graph,neighbour);
+               dfs(graph,neighbour,visited);
             }
         }
 }
@@ -41,6 +40,7 @@ int main() {
  int startvertex;
  cout<<"enter startvertex";
  cin>>startvertex;
- dfs(graph,startvertex);
+ vector<bool>visited(graph.size(),false);
+ dfs(graph,startvertex,visited);
     return 0;
 }
